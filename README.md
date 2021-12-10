@@ -8,6 +8,8 @@ The idea was to have a simple "hello world!" app, that could be used to show thi
 
 Plus be able to allow for envars and config overwrites to help with understanding things like Secrets and ConfigMaps.
 
+![image](pictures/Screenshot%202021-12-10%20214346.jpg)
+
 # Usage
 
 The following ENVVARS are available:
