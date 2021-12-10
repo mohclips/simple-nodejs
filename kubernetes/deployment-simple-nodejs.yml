@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: simple-nodejs
+  name: simple-nodejs-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-nodejs
+  template:
+    metadata:
+      labels:
+        app: simple-nodejs
+    spec:
+      containers:
+      - name: simple-nodejs
+        image: mohlcips/simple-nodejs:latest
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-password
+              key: password
+        envFrom:
+        - secretRef:
+          name: db-user-creds
+      #   volumeMounts:
+      #   - mountPath: /var/lib/mysql
+      #     name: mariadb-volume-1
+      # volumes:
+      # - emptyDir: {}
+      #   name: mariadb-volume-1
