@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+ head
+   title= title
+ body
+   h1= title
+   h2 I am #{os.hostname}
+   h3= message
+   div.remark
+    p 
+    b The host os looks like this
+    pre
+      p os.hostname: #{os.hostname}
+      p os.version: #{os.version}
+      p os.platform: #{os.platform} 
+      p os.release: #{os.release} 
+      p os.uptime #{os.uptime()}
+      p Running as: #{os.userInfo().username} in #{os.userInfo().homedir}
+   div.remark
+    p 
+    b The app args look like this
+    pre
+      p config.app.host: #{app.host}
+      p config.app.port: #{app.port}
+      p config.view.message: #{message}
+   div.remark
+    p 
+    b The database args look like this
+    pre
+      p config.db.username: #{db.username}
+      p config.db.password: #{db.password}
+      p config.db.host: #{db.host}
+      p config.db.database: #{db.database}
