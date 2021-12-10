@@ -1,7 +1,8 @@
 // Load modules
 const express = require('express')
 const os = require('os');
-var config = require('./config'); // var as we are going to reload later on
+const config_file = './config'
+var config = require(config_file); // var as we are going to reload later on
 
 // bring in config from file (in msecs)
 const configUpdateInterval = process.env.CONFIG_RELOAD_INTERVAL || 5000
@@ -9,13 +10,15 @@ const configUpdateInterval = process.env.CONFIG_RELOAD_INTERVAL || 5000
 // "hack" to auto-load config at 'interval' to allow for config updates via configMap
 setInterval(() => {
   console.log('reloading config')
-  delete require.cache[require.resolve('./config')];
-  config = require('./config')
+  delete require.cache[require.resolve(config_file)];
+  config = require(config_file)
 }, configUpdateInterval)
 // everything is loaded into 'config' eg. config.app.port
 
 // debug - dump all env vars
 console.debug(process.env)
+// debug - dump config
+console.debug(config)
 
 // init web app
 var app = express()
