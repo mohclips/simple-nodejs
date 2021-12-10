@@ -63,3 +63,8 @@ TBA
 [See this page on Docker Hub](https://hub.docker.com/repository/docker/mohclips/simple-nodejs)
 
 `docker pull mohclips/simple-nodejs`
+
+## build this yourself
+
+1. clone this git repo
+2. docker build -t simple-nodejs .
