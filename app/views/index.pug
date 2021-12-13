@@ -15,6 +15,7 @@ html(lang='en')
       p os.platform: #{os.platform} 
       p os.release: #{os.release} 
       p os.uptime #{os.uptime()}
+      p process.uptime #{process.uptime()}
       p Running as: #{os.userInfo().username} in #{os.userInfo().homedir}
    div.remark
     p 
@@ -31,3 +32,6 @@ html(lang='en')
       p config.db.password: #{db.password}
       p config.db.host: #{db.host}
       p config.db.database: #{db.database}
+
+   div(style={'border': '1px dashed red', background: 'WhiteSmoke', width: '50%'})
+    include ../includes/index.html
