@@ -52,12 +52,34 @@ app.get('/', function (req, res) {
     message: config.view.message,
     os: os,
     db: config.db,
-    app: config.app
+    app: config.app,
+    uptime: process.uptime()
   })
 
   // log the client headers
   console.log(req.headers)
 })
+
+//simple output
+app.get('/simple', function (req, res) {
+
+  let date_ob = new Date();
+  // current date
+  let date = ("0" + date_ob.getDate()).slice(-2);
+  let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+  let year = date_ob.getFullYear();
+  let hours = date_ob.getHours();
+  let minutes = date_ob.getMinutes();
+  let seconds = date_ob.getSeconds();
+
+  const simple = {
+		timestamp:year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds,
+    hostname: os.hostname(),
+		uptime: process.uptime()
+	};
+	 res.send(simple);
+})
+
 
 // noddy health check
 app.get('/health', function (req, res) {
