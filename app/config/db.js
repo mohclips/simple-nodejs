@@ -1,4 +1,4 @@
-// config.js
+// db.js
 
 module.exports = {
       username: process.env.DB_USERNAME || 'db_admin',
